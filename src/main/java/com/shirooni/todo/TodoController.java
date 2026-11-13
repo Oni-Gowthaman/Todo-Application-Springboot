@@ -2,6 +2,7 @@ package com.shirooni.todo;
 
 import com.shirooni.todo.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,11 @@ public class TodoController {
 //    String getTodoIdnumberparam(@RequestParam("id") int idnum) {
 //        return "This is a todo Id "+idnum;
 //    }
+
+    @GetMapping("/page")
+    ResponseEntity<Page<Todo>> getTodoByPage(@RequestParam int page, @RequestParam int size) {
+        return new ResponseEntity<>(todoService.getTodoByPage(page, size), HttpStatus.OK);
+    }
 
     //request body for secure data transfer
     @PostMapping("/create")
