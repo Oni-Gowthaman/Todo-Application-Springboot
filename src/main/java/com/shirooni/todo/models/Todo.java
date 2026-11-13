@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -11,7 +13,11 @@ public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank
+    @NotNull
     private String title;
+    @NotBlank
+    @NotNull
     private String description;
     private Boolean iscompleted;
 
